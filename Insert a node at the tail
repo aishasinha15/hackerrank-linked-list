@@ -1,0 +1,15 @@
+SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data) {
+SinglyLinkedListNode* temp=new SinglyLinkedListNode(data);
+temp->data=data;
+temp->next=NULL;
+SinglyLinkedListNode* temp1=head;
+if(temp1==NULL){
+    temp1=temp;
+}
+ while(temp1->next!=NULL){
+     temp1=temp1->next;
+}
+temp1->next=temp;
+//temp->next=NULL;
+return head;
+}
