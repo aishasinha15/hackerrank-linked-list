@@ -1,0 +1,40 @@
+DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* llist, int data) {
+DoublyLinkedListNode* temp=new DoublyLinkedListNode(data);
+DoublyLinkedListNode* head=llist;
+DoublyLinkedListNode* headcopy=llist;
+DoublyLinkedListNode* headcopy2=llist;
+DoublyLinkedListNode* headcopy3=llist;
+int max=0,min=INT_MAX;
+while(head!=NULL){
+    if(head->data<min)
+    min=head->data;
+if(head->data>max)
+    max=head->data;
+head=head->next;
+}
+if(temp->data<min){
+    headcopy->prev=temp;
+    temp->next=headcopy;
+    llist=temp;
+    return llist;
+}
+else if(temp->data>max){
+    while(headcopy2->next!=NULL){
+        headcopy2=headcopy2->next;
+    }
+    headcopy2->next=temp;
+    temp->prev=headcopy2;
+    temp->next=NULL;
+    return llist;
+}
+else{
+while(headcopy3->data<temp->data)
+    headcopy3=headcopy3->next;
+headcopy3->prev->next=temp;
+temp->next=headcopy3;
+headcopy3->prev=temp;
+
+return llist;
+
+}
+}
